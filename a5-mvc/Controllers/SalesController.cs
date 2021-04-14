@@ -21,13 +21,13 @@ namespace a5_mvc.Controllers
 		// GET: Sales/Details/5
 		public ActionResult Details(int id)
 		{
-			return View(ctx.SoldPets.Find(id));
+			return View(SoldPetFromId(id));
 		}
 
 		// GET: Sales/Create
 		public ActionResult Create()
 		{
-			return View();
+			return View(InitDDL(new Sale()));
 		}
 
 		// POST: Sales/Create
@@ -37,6 +37,9 @@ namespace a5_mvc.Controllers
 			try
 			{
 				ctx.Sales.Add(sale);
+				Pet pet = ctx.Pets.Find(sale.PetId);
+				ctx.Pets.Remove(pet);
+				ctx.SoldPets.Add(new SoldPet(pet));
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
@@ -70,7 +73,7 @@ namespace a5_mvc.Controllers
 		// GET: Sales/Delete/5
 		public ActionResult Delete(int id)
 		{
-			return View(ctx.Sales.Find(id));
+			return View(SaleFromId(id));
 		}
 
 		// POST: Sales/Delete/5
@@ -79,8 +82,8 @@ namespace a5_mvc.Controllers
 		{
 			try
 			{
-				// TODO: Add delete logic here
-
+				ctx.Sales.Remove(sale);
+				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
 			catch
@@ -90,6 +93,13 @@ namespace a5_mvc.Controllers
 		}
 
 		////////////////////utility methods
+		private SoldPet SoldPetFromId(int id)
+		{
+			return ctx.SoldPets
+				.Include(x => x.Category)
+				.Single(x => x.Id == id);
+		}
+
 		private Sale SaleFromId(int id)
 		{
 			return ctx.Sales

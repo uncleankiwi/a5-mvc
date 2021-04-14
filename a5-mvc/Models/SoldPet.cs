@@ -20,6 +20,16 @@ namespace a5_mvc.Models
 		public string Gender { get; set; }
 		public Decimal Price { get; set; }
 		public string Name { get; set; }
+		[NotMapped]
 		public Category Category { get; set; }
+		public SoldPet(Pet pet)
+		{
+			this.Id = pet.Id;
+			this.CategoryId = pet.Id;
+			this.BirthDate = pet.BirthDate;
+			this.Gender = pet.Gender;
+			this.Price = pet.Price;
+			this.Name = pet.Name;
+		}
 	}
 }

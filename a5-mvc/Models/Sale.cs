@@ -20,9 +20,17 @@ namespace a5_mvc.Models
 		[DisplayName("Sale date")]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime SaleDate { get; set; }
+		[NotMapped]
 		public Customer Customer { get; set; }
+		[NotMapped]
 		public SoldPet SoldPet {get; set; }
+		[NotMapped]
+		public int PetId { get; set; }
+		[NotMapped]
+		public Pet Pet { get; set; }
+		[NotMapped]
 		public IEnumerable<SelectListItem> PetsList { get; set; }
+		[NotMapped]
 		public IEnumerable<SelectListItem> CustomerList { get; set; }
 
 	}
