@@ -1,4 +1,6 @@
-﻿using System;
+﻿using a5_mvc.Classes;
+using a5_mvc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,16 +10,17 @@ namespace a5_mvc.Controllers
 {
     public class SalesController : Controller
     {
+        Context ctx = new Context();
         // GET: Sales
         public ActionResult Index()
         {
-            return View();
+            return View(ctx.Sales.ToList());
         }
 
         // GET: Sales/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(ctx.SoldPets.Find(id));
         }
 
         // GET: Sales/Create
@@ -28,12 +31,12 @@ namespace a5_mvc.Controllers
 
         // POST: Sales/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Sale sale)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                ctx.Sales.Add(sale);
+                ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -42,37 +45,36 @@ namespace a5_mvc.Controllers
             }
         }
 
-        // GET: Sales/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //// GET: Sales/Edit/5
+        //public ActionResult Edit(int id)
+        //{
+        //    return View(ctx.Sales.Find(id));
+        //}
 
-        // POST: Sales/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //// POST: Sales/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(Sale sale)
+        //{
+        //    try
+        //    {
+                
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Sales/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(ctx.Sales.Find(id));
         }
 
         // POST: Sales/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Sale sale)
         {
             try
             {
@@ -85,5 +87,13 @@ namespace a5_mvc.Controllers
                 return View();
             }
         }
+
+        ////////////////////utility methods
+        private void InitDDL(Sale sale)
+		{
+            sale.CustomerList = App.GetCustomersDDL();
+            sale.PetsList = App.GetPetsDDL();
+		}
+
     }
 }

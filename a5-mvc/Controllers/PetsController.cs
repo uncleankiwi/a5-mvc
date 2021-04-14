@@ -1,4 +1,5 @@
-﻿using a5_mvc.Models;
+﻿using a5_mvc.Classes;
+using a5_mvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,12 @@ namespace a5_mvc.Controllers
 			{
 				return View();
 			}
+		}
+
+		/////////////////////utility methods
+		private void InitDDL(Pet pet)
+		{
+			pet.CategoriesList = App.GetCategoriesDDL();
 		}
 	}
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace a5_mvc.Models
 {
@@ -16,6 +18,12 @@ namespace a5_mvc.Models
 		[DisplayName("Sold pet")]
 		public int SoldPetId { get; set; }
 		[DisplayName("Sale date")]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime SaleDate { get; set; }
+		public Customer Customer { get; set; }
+		public SoldPet SoldPet {get; set; }
+		public IEnumerable<SelectListItem> PetsList { get; set; }
+		public IEnumerable<SelectListItem> CustomerList { get; set; }
+
 	}
 }
