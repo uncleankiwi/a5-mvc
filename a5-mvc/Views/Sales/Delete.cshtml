@@ -1,45 +1,45 @@
 ﻿@model a5_mvc.Models.Sale
 
 @{
-    ViewBag.Title = "Delete Sale";
+	ViewBag.Title = "Delete Sale";
 }
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Sale</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </dt>
+	<h4>Sale</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.CustomerId)
+		</dt>
+
+		<dd>
+			@Html.Display(Model.CustomerId + " : " + Model.Customer.Name)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.SoldPetId)
+		</dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CustomerId)
+            @Html.Display(Model.SoldPetId + " : " + Model.SoldPet.Category.CategoryName + " : " + Model.SoldPet.Name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoldPetId)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.SaleDate)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SoldPetId)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.SaleDate)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SaleDate)
-        </dt>
+	</dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.SaleDate)
-        </dd>
+	@using (Html.BeginForm()) {
+		@Html.AntiForgeryToken()
 
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-default" /> |
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	}
 </div>
