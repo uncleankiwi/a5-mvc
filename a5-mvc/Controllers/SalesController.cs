@@ -15,7 +15,19 @@ namespace a5_mvc.Controllers
 		// GET: Sales
 		public ActionResult Index()
 		{
-			return View(ctx.Sales.ToList());
+			try
+			{
+				return View(ctx.Sales
+				.Include(x => x.SoldPet)
+				.Include(x => x.Customer)
+				.ToList());
+			}
+			catch (Exception e)
+			{
+				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
+				return View();
+			}
+
 		}
 
 		// GET: Sales/Details/5
@@ -43,8 +55,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
 				return View();
 			}
 		}

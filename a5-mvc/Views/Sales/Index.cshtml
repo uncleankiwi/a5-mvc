@@ -27,7 +27,8 @@
 			@Html.Display(item.CustomerId + " : " + item.Customer.Name)
 		</td>
 		<td>
-			@Html.Display(item.SoldPetId + " : " + item.SoldPet.Category.CategoryName + " : " + item.SoldPet.Name)
+			@Html.Display(item.SoldPetId.ToString())
+			@*@Html.Display(item.SoldPetId + " : " + item.SoldPet.Category.CategoryName + " : " + item.SoldPet.Name)*@
 		</td>
 		<td>
 			@Html.DisplayFor(modelItem => item.SaleDate)
