@@ -38,8 +38,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Category creation exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
@@ -60,8 +61,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Category edit exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
@@ -84,7 +86,7 @@ namespace a5_mvc.Controllers
 			}
 			catch (Exception e)
 			{
-				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
+				System.Diagnostics.Debug.WriteLine("Category deletion exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}

@@ -38,8 +38,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Customer creation exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
@@ -60,8 +61,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Customer edit exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
@@ -82,8 +84,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Customer deletion exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}

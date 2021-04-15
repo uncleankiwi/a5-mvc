@@ -42,8 +42,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Pet creation exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
@@ -64,8 +65,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Pet edit exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
@@ -86,8 +88,9 @@ namespace a5_mvc.Controllers
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine("Pet deletion exception: " + e.GetBaseException().ToString());
 				return View();
 			}
 		}
