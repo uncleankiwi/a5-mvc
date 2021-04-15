@@ -8,6 +8,10 @@ namespace a5_mvc.Models
 {
 	public class Context : DbContext
 	{
+		public Context()
+		{
+			Database.SetInitializer<Context>(null);
+		}
 		public DbSet<Pet> Pets { get; set; }
 		public DbSet<SoldPet> SoldPets { get; set; }
 		public DbSet<Category> Categories { get; set; }

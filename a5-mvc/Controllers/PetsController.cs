@@ -16,7 +16,8 @@ namespace a5_mvc.Controllers
 		// GET: Pets
 		public ActionResult Index()
 		{
-			return View(ctx.Pets.ToList());
+			//System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
+			return View(ctx.Pets.Include(x => x.Category).ToList());
 		}
 
 		// GET: Pets/Details/5

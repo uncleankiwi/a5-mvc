@@ -21,7 +21,6 @@ namespace a5_mvc.Models
 		public string Gender { get; set; }
 		public Decimal Price { get; set; }
 		public string Name { get; set; }
-		[NotMapped]
 		public Category Category { get; set; }
 		[NotMapped]
 		public IEnumerable<SelectListItem> CategoriesList { get; set; }

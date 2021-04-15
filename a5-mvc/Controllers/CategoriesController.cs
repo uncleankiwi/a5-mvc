@@ -84,7 +84,6 @@ namespace a5_mvc.Controllers
 			}
 			catch (Exception e)
 			{
-				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
 				return View();
 			}
 		}
