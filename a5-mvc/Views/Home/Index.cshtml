@@ -1,26 +1,26 @@
 ﻿@model a5_mvc.Models.Home
 @{
-	ViewBag.Title = "Statistics";
+	ViewBag.Title = "Estimated Statistics";
 }
 
 <div class="row">
 	<div class="col-md-4">
-        <div>
-            <p>
-                Pets in shelter: @Html.DisplayFor(model => model.Shelter)
-            </p>
-            <p>
-                Pets who have found a home: @Html.DisplayFor(model => model.FoundHome)
-            </p>
-            <p>
-                Pets put down: @Html.DisplayFor(model => model.PutDown)
-            </p>
-            <p>
-                Percent saved: @Html.DisplayFor(model => model.PercentSaved)
-            </p>
-            <p>
-                <i>Every effort counts!</i>
-            </p>
-        </div>
+		<div>
+			<p>
+				Pets in shelter: @Html.DisplayFor(model => model.Shelter)
+			</p>
+			<p>
+				Pets who have found a home: @Html.DisplayFor(model => model.FoundHome)
+			</p>
+			<p>
+				Pets put down: @Html.DisplayFor(model => model.PutDown)
+			</p>
+			<p>
+				Percent saved: @Html.DisplayFor(model => model.PercentSaved)
+			</p>
+			<p>
+				<i>Every effort counts!</i>
+			</p>
+		</div>
 	</div>
 </div>

@@ -11,7 +11,7 @@ namespace a5_mvc.Models
 		public int FoundHome { get; set; } //SoldPets.max
 		public int PutDown { get; set; } //Pets.max - Pets.count
 
-		public Decimal PercentSaved { get; set; } //FH / (FH + PD)
+		public string PercentSaved { get; set; } //FH / (FH + PD)
 
 	}
 }

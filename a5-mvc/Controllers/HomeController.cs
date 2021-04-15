@@ -42,7 +42,8 @@ namespace a5_mvc.Controllers
 			home.PutDown = petsMax - home.Shelter;
 			int totalOutOfShelter = home.FoundHome + home.PutDown;
 			totalOutOfShelter = totalOutOfShelter != 0 ? totalOutOfShelter : 1;
-			home.PercentSaved = home.FoundHome / totalOutOfShelter;
+			decimal savedPercent = home.FoundHome / totalOutOfShelter * 100;
+			home.PercentSaved = String.Format("{0:N0}", savedPercent) + "%";
 			return View(home);
 		}
 
