@@ -16,6 +16,7 @@ namespace a5_mvc.Models
 		[DisplayName("Category")]
 		public int CategoryId { get; set; }
 		[DisplayName("Date of birth")]
+		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime BirthDate { get; set; }
 		public string Gender { get; set; }
