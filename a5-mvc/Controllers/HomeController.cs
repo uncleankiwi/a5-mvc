@@ -13,9 +13,33 @@ namespace a5_mvc.Controllers
 		public ActionResult Index()
 		{
 			Home home = new Home();
-			home.Shelter = ctx.Pets.Count();
-			home.FoundHome = ctx.SoldPets.Max(x => x.Id);
-			home.PutDown = ctx.Pets.Max(x => x.Id) - home.Shelter;
+			try
+			{
+				home.Shelter = ctx.Pets.Count();
+			}
+			catch (Exception)
+			{
+				home.Shelter = 0;
+			}
+
+			try
+			{
+				home.FoundHome = ctx.SoldPets.Max(x => x.Id);
+			}
+			catch (Exception)
+			{
+				home.FoundHome = 0;
+			}
+
+			int petsMax = 0;
+			try
+			{
+				petsMax = ctx.Pets.Max(x => x.Id);
+			}
+			catch (Exception)
+			{
+			}
+			home.PutDown = petsMax - home.Shelter;
 			int totalOutOfShelter = home.FoundHome + home.PutDown;
 			totalOutOfShelter = totalOutOfShelter != 0 ? totalOutOfShelter : 1;
 			home.PercentSaved = home.FoundHome / totalOutOfShelter;
