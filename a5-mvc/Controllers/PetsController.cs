@@ -76,12 +76,12 @@ namespace a5_mvc.Controllers
 		}
 
 		// POST: Pets/Delete/5
-		[HttpPost]
-		public ActionResult Delete(Pet pet)
+		[HttpPost, ActionName("Delete")]
+		public ActionResult DeleteConfirm(int id)
 		{
 			try
 			{
-				ctx.Pets.Remove(pet);
+				ctx.Pets.Remove(PetFromId(id));
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}

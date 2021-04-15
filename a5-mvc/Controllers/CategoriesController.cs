@@ -73,17 +73,18 @@ namespace a5_mvc.Controllers
 		}
 
 		// POST: Categories/Delete/5
-		[HttpPost]
-		public ActionResult Delete(Category category)
+		[HttpPost, ActionName("Delete")]
+		public ActionResult DeleteConfirm(int id)
 		{
 			try
 			{
-				ctx.Categories.Remove(category);
+				ctx.Categories.Remove(ctx.Categories.Find(id));
 				ctx.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			catch
+			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
 				return View();
 			}
 		}

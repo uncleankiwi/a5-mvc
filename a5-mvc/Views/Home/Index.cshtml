@@ -5,28 +5,22 @@
 
 <div class="row">
 	<div class="col-md-4">
-		<div>
-			<dl class="dl-horizontal">
-				<dd>
-					Pets in shelter: @Html.DisplayFor(model => model.Shelter)
-				</dd>
-
-				<dd>
-					Pets who have found a home: @Html.DisplayFor(model => model.FoundHome)
-				</dd>
-
-				<dd>
-					Pets put down: @Html.DisplayFor(model => model.PutDown)
-				</dd>
-
-				<dd>
-					Percent saved: @Html.DisplayFor(model => model.PercentSaved)
-				</dd>
-
-				<dd>
-					<i>Every effort counts!</i>
-				</dd>
-			</dl>
-		</div>
+        <div>
+            <p>
+                Pets in shelter: @Html.DisplayFor(model => model.Shelter)
+            </p>
+            <p>
+                Pets who have found a home: @Html.DisplayFor(model => model.FoundHome)
+            </p>
+            <p>
+                Pets put down: @Html.DisplayFor(model => model.PutDown)
+            </p>
+            <p>
+                Percent saved: @Html.DisplayFor(model => model.PercentSaved)
+            </p>
+            <p>
+                <i>Every effort counts!</i>
+            </p>
+        </div>
 	</div>
 </div>
