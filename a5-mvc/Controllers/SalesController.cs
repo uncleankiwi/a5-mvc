@@ -52,16 +52,16 @@ namespace a5_mvc.Controllers
 			try
 			{
 				Pet pet = ctx.Pets.Find(sale.PetId);
-
-				System.Diagnostics.Debug.WriteLine("pet:" + sale.Pet);              //TODO sales fix
+				System.Diagnostics.Debug.WriteLine("petid:" + sale.PetId);           //TODO sales fix
+				System.Diagnostics.Debug.WriteLine("pet:" + pet);              //TODO sales fix
 				SoldPet soldPet = new SoldPet(pet);
-				System.Diagnostics.Debug.WriteLine("soldpet:" + sale.SoldPet);  //TODO sales fix
+				System.Diagnostics.Debug.WriteLine("soldpet:" + soldPet);  //TODO sales fix
 				ctx.SoldPets.Add(soldPet);
 				ctx.Pets.Remove(pet);
 				ctx.SaveChanges();
 
 				int newSoldPetId = ctx.SoldPets.Max(x => x.Id);
-				System.Diagnostics.Debug.WriteLine("soldpet:" + sale.SoldPet);  //TODO sales fix
+				System.Diagnostics.Debug.WriteLine("newsoldpetid:" + newSoldPetId);  //TODO sales fix
 				sale.SoldPetId = newSoldPetId;
 				ctx.Sales.Add(sale);
 				ctx.SaveChanges();
@@ -128,10 +128,11 @@ namespace a5_mvc.Controllers
 
 		private Sale SaleFromId(int id)
 		{
-			return ctx.Sales
+			Sale sale =  ctx.Sales
 				.Include(x => x.Customer)
 				.Include(x => x.SoldPet)
 				.Single(x => x.Id == id);
+			return sale;
 		}
 		private Sale InitDDL(Sale sale)
 		{
