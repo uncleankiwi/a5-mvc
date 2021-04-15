@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace a5_mvc.Classes
 {
 	public class App
 	{
-		static Context ctx = new Context();
+		static readonly Context ctx = new Context();
 		public static IEnumerable<SelectListItem> GetCustomersDDL()
 		{
 			return ctx.Customers.ToList().Select(x => new SelectListItem
@@ -21,10 +22,12 @@ namespace a5_mvc.Classes
 
 		public static IEnumerable<SelectListItem> GetPetsDDL()
 		{
-			return ctx.Pets.ToList().Select(x => new SelectListItem
+			return ctx.Pets
+				.Include(x => x.Category)
+				.ToList().Select(x => new SelectListItem
 			{
 				Value = x.Id.ToString(),
-				Text = x.Id.ToString() + ": " + x.Name,
+				Text = x.Id.ToString() + " (" + x.Category.CategoryName + "): " + x.Name,
 			});
 		}
 

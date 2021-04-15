@@ -9,7 +9,7 @@ namespace a5_mvc.Controllers
 {
 	public class CategoriesController : Controller
 	{
-		Context ctx = new Context();
+		readonly Context ctx = new Context();
 		// GET: Categories
 		public ActionResult Index()
 		{
@@ -84,6 +84,7 @@ namespace a5_mvc.Controllers
 			}
 			catch (Exception e)
 			{
+				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
 				return View();
 			}
 		}

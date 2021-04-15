@@ -25,5 +25,15 @@ namespace a5_mvc.Models
 		public Category Category { get; set; }
 		[NotMapped]
 		public IEnumerable<SelectListItem> CategoriesList { get; set; }
+
+		override
+		public string ToString()
+		{
+			return "pet:" + this.Id.ToString() +
+				" category:" + this.CategoryId.ToString() +
+				" name:" + this.Name +
+				" categoryname:" + this.Category.CategoryName +
+				" price:" + this.Price.ToString();
+		}
 	}
 }

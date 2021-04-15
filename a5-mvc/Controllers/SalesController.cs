@@ -11,7 +11,7 @@ namespace a5_mvc.Controllers
 {
 	public class SalesController : Controller
 	{
-		Context ctx = new Context();
+		readonly Context ctx = new Context();
 		// GET: Sales
 		public ActionResult Index()
 		{
@@ -46,13 +46,26 @@ namespace a5_mvc.Controllers
 		[HttpPost]
 		public ActionResult Create(Sale sale)
 		{
+			System.Diagnostics.Debug.WriteLine("sale!");						//TODO sales fix
+
+
 			try
 			{
-				ctx.Sales.Add(sale);
 				Pet pet = ctx.Pets.Find(sale.PetId);
+
+				System.Diagnostics.Debug.WriteLine("pet:" + sale.Pet);              //TODO sales fix
+				SoldPet soldPet = new SoldPet(pet);
+				System.Diagnostics.Debug.WriteLine("soldpet:" + sale.SoldPet);  //TODO sales fix
+				ctx.SoldPets.Add(soldPet);
 				ctx.Pets.Remove(pet);
-				ctx.SoldPets.Add(new SoldPet(pet));
 				ctx.SaveChanges();
+
+				int newSoldPetId = ctx.SoldPets.Max(x => x.Id);
+				System.Diagnostics.Debug.WriteLine("soldpet:" + sale.SoldPet);  //TODO sales fix
+				sale.SoldPetId = newSoldPetId;
+				ctx.Sales.Add(sale);
+				ctx.SaveChanges();
+
 				return RedirectToAction("Index");
 			}
 			catch (Exception e)

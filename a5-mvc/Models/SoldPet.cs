@@ -34,5 +34,15 @@ namespace a5_mvc.Models
 			this.Price = pet.Price;
 			this.Name = pet.Name;
 		}
+
+		override
+		public string ToString()
+		{
+			return "soldpet:" + this.Id.ToString() +
+				" category:" + this.CategoryId.ToString() +
+				" name:" + this.Name +
+				" categoryname:" + this.Category.CategoryName +
+				" price:" + this.Price.ToString();
+		}
 	}
 }
