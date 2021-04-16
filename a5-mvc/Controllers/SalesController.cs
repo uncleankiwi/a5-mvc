@@ -20,6 +20,7 @@ namespace a5_mvc.Controllers
 				return View(ctx.Sales
 				.Include(x => x.SoldPet)
 				.Include(x => x.Customer)
+				.Include(x => x.SoldPet.Category)
 				.ToList());
 			}
 			catch (Exception e)

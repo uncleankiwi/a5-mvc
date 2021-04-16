@@ -24,11 +24,10 @@
 @foreach (var item in Model) {
 	<tr>
 		<td>
-			@Html.Display(item.CustomerId + " : " + item.Customer.Name)
+			@Html.DisplayName(item.CustomerId.ToString() + " : " + item.Customer.Name)
 		</td>
 		<td>
-			@Html.Display(item.SoldPetId.ToString())
-			@*@Html.Display(item.SoldPetId + " : " + item.SoldPet.Category.CategoryName + " : " + item.SoldPet.Name)*@
+			@Html.DisplayName(item.SoldPetId + " (" + item.SoldPet.Category.CategoryName + "): " + item.SoldPet.Name)
 		</td>
 		<td>
 			@Html.DisplayFor(modelItem => item.SaleDate)
