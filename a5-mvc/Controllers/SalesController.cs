@@ -63,6 +63,7 @@ namespace a5_mvc.Controllers
 				int newSoldPetId = ctx.SoldPets.Max(x => x.Id);
 				System.Diagnostics.Debug.WriteLine("newsoldpetid:" + newSoldPetId);  //TODO sales fix
 				sale.SoldPetId = newSoldPetId;
+				System.Diagnostics.Debug.WriteLine("before sale add:" + newSoldPetId);  //TODO sales fix
 				ctx.Sales.Add(sale);
 				ctx.SaveChanges();
 
@@ -110,6 +111,7 @@ namespace a5_mvc.Controllers
 			{
 				ctx.Sales.Remove(SaleFromId(id));
 				ctx.SaveChanges();
+
 				return RedirectToAction("Index");
 			}
 			catch (Exception e)

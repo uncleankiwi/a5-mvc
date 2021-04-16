@@ -12,6 +12,7 @@ namespace a5_mvc.Models
 	[Table("tblSale")]
 	public class Sale
 	{
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 		[DisplayName("Customer")]
 		public int CustomerId { get; set; }
@@ -30,5 +31,12 @@ namespace a5_mvc.Models
 		public IEnumerable<SelectListItem> PetsList { get; set; }
 		public IEnumerable<SelectListItem> CustomerList { get; set; }
 
+		override
+		public string ToString()
+		{
+			return "sale:" + this.Id.ToString() +
+				" categoryid:" + this.CustomerId.ToString() +
+				" name:" + this.SoldPetId.ToString();
+		}
 	}
 }

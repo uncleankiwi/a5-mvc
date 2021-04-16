@@ -11,6 +11,7 @@ namespace a5_mvc.Models
 	[Table("tblSoldPet")]
 	public class SoldPet
 	{
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 		[DisplayName("Category")]
 		public int CategoryId { get; set; }
@@ -27,8 +28,7 @@ namespace a5_mvc.Models
 		}
 		public SoldPet(Pet pet)
 		{
-			this.Id = pet.Id;
-			this.CategoryId = pet.Id;
+			this.CategoryId = pet.CategoryId;
 			this.BirthDate = pet.BirthDate;
 			this.Gender = pet.Gender;
 			this.Price = pet.Price;
