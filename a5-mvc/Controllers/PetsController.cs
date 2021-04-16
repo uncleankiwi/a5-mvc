@@ -38,6 +38,7 @@ namespace a5_mvc.Controllers
 		{
 			try
 			{
+				System.Diagnostics.Debug.WriteLine("created: " + pet);
 				ctx.Pets.Add(pet);
 				ctx.SaveChanges();
 				return RedirectToAction("Index");

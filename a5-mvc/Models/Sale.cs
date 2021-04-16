@@ -12,7 +12,6 @@ namespace a5_mvc.Models
 	[Table("tblSale")]
 	public class Sale
 	{
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 		[DisplayName("Customer")]
 		public int CustomerId { get; set; }

@@ -46,24 +46,17 @@ namespace a5_mvc.Controllers
 		[HttpPost]
 		public ActionResult Create(Sale sale)
 		{
-			System.Diagnostics.Debug.WriteLine("sale!");						//TODO sales fix
-
-
 			try
 			{
 				Pet pet = ctx.Pets.Find(sale.PetId);
-				System.Diagnostics.Debug.WriteLine("petid:" + sale.PetId);           //TODO sales fix
-				System.Diagnostics.Debug.WriteLine("pet:" + pet);              //TODO sales fix
 				SoldPet soldPet = new SoldPet(pet);
-				System.Diagnostics.Debug.WriteLine("soldpet:" + soldPet);  //TODO sales fix
 				ctx.SoldPets.Add(soldPet);
 				ctx.Pets.Remove(pet);
 				ctx.SaveChanges();
 
 				int newSoldPetId = ctx.SoldPets.Max(x => x.Id);
-				System.Diagnostics.Debug.WriteLine("newsoldpetid:" + newSoldPetId);  //TODO sales fix
 				sale.SoldPetId = newSoldPetId;
-				System.Diagnostics.Debug.WriteLine("before sale add:" + newSoldPetId);  //TODO sales fix
+				sale.Id = 0;
 				ctx.Sales.Add(sale);
 				ctx.SaveChanges();
 
