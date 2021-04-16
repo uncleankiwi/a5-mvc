@@ -13,7 +13,7 @@ namespace a5_mvc.Models
 		public int PutDown { get; set; } //Pets.max - Pets.count
 
 		public string PercentSaved { get; set; } //FH / (FH + PD)
-		public Color Color { get; set; }
+		public string Color { get; set; }
 
 	}
 }

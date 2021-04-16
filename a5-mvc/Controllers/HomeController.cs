@@ -42,26 +42,26 @@ namespace a5_mvc.Controllers
 			int totalOutOfShelter = home.FoundHome + home.PutDown;
 			totalOutOfShelter = totalOutOfShelter != 0 ? totalOutOfShelter : 1;
 			decimal savedPercent = Convert.ToDecimal(home.FoundHome) / Convert.ToDecimal(totalOutOfShelter) * 100;
-			home.Color = Color.Red;
+			home.Color = "color: red";
 			if (savedPercent >= 90)
 			{
-				home.Color = Color.Green;
+				home.Color = "color: green";
 			}
 			else if (savedPercent >= 80)
 			{
-				home.Color = Color.YellowGreen;
+				home.Color = "color: yellowgreen";
 			}
 			else if (savedPercent >= 70)
 			{
-				home.Color = Color.Yellow;
+				home.Color = "color: yellow";
 			}
 			else if (savedPercent >= 60)
 			{
-				home.Color = Color.Orange;
+				home.Color = "color: orange";
 			}
 			else if (savedPercent >= 50)
 			{
-				home.Color = Color.OrangeRed;
+				home.Color = "color: orangered";
 			}
 			home.PercentSaved = String.Format("{0:N0}", savedPercent) + "%";
 			return View(home);
