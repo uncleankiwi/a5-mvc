@@ -16,7 +16,7 @@
 				Pets put down: @Html.DisplayFor(model => model.PutDown)
 			</p>
 			<p>
-				Percent saved: @Html.DisplayFor(model => model.PercentSaved)
+				Percent saved: @Html.Label(Model.PercentSaved, htmlAttributes: new { @style = Model.Color })
 			</p>
 			<p>
 				<i>Every effort counts!</i>

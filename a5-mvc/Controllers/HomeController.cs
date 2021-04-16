@@ -1,8 +1,7 @@
 ﻿using a5_mvc.Models;
 using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace a5_mvc.Controllers
@@ -42,7 +41,28 @@ namespace a5_mvc.Controllers
 			home.PutDown = petsMax - home.Shelter;
 			int totalOutOfShelter = home.FoundHome + home.PutDown;
 			totalOutOfShelter = totalOutOfShelter != 0 ? totalOutOfShelter : 1;
-			decimal savedPercent = home.FoundHome / totalOutOfShelter * 100;
+			decimal savedPercent = Convert.ToDecimal(home.FoundHome) / Convert.ToDecimal(totalOutOfShelter) * 100;
+			home.Color = Color.Red;
+			if (savedPercent >= 90)
+			{
+				home.Color = Color.Green;
+			}
+			else if (savedPercent >= 80)
+			{
+				home.Color = Color.YellowGreen;
+			}
+			else if (savedPercent >= 70)
+			{
+				home.Color = Color.Yellow;
+			}
+			else if (savedPercent >= 60)
+			{
+				home.Color = Color.Orange;
+			}
+			else if (savedPercent >= 50)
+			{
+				home.Color = Color.OrangeRed;
+			}
 			home.PercentSaved = String.Format("{0:N0}", savedPercent) + "%";
 			return View(home);
 		}
