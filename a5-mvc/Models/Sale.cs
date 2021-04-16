@@ -19,7 +19,7 @@ namespace a5_mvc.Models
 		public int SoldPetId { get; set; }
 		[DisplayName("Sale date")]
 		[DataType(DataType.Date)]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime SaleDate { get; set; }
 		public Customer Customer { get; set; }
 		public SoldPet SoldPet {get; set; }
