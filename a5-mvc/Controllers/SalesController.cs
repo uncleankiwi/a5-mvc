@@ -34,7 +34,19 @@ namespace a5_mvc.Controllers
 		// GET: Sales/Details/5
 		public ActionResult Details(int id)
 		{
-			return View(SoldPetFromId(id));
+			try
+			{
+				Sale sale = ctx.Sales.Find(id);
+				SoldPet soldPet = ctx.SoldPets
+					.Include(x => x.Category)
+					.Single(x => x.Id == sale.SoldPetId);
+			return View(soldPet);
+			}
+			catch (Exception e)
+			{
+				System.Diagnostics.Debug.WriteLine(e.GetBaseException().ToString());
+				return View();
+			}
 		}
 
 		// GET: Sales/Create
@@ -116,13 +128,6 @@ namespace a5_mvc.Controllers
 		}
 
 		////////////////////utility methods
-		private SoldPet SoldPetFromId(int id)
-		{
-			return ctx.SoldPets
-				.Include(x => x.Category)
-				.Single(x => x.Id == id);
-		}
-
 		private Sale SaleFromId(int id)
 		{
 			Sale sale =  ctx.Sales
