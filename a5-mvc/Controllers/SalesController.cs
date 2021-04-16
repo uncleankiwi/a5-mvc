@@ -52,7 +52,11 @@ namespace a5_mvc.Controllers
 		// GET: Sales/Create
 		public ActionResult Create()
 		{
-			return View(InitDDL(new Sale()));
+			Sale sale = new Sale
+			{
+				SaleDate = DateTime.Now
+			};
+			return View(InitDDL(sale));
 		}
 
 		// POST: Sales/Create

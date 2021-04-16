@@ -29,7 +29,11 @@ namespace a5_mvc.Controllers
 		// GET: Pets/Create
 		public ActionResult Create()
 		{
-			return View(InitDDL(new Pet()));
+			Pet pet = new Pet
+			{
+				BirthDate = DateTime.Now
+			};
+			return View(InitDDL(pet));
 		}
 
 		// POST: Pets/Create
